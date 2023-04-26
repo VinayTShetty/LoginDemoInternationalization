@@ -1,0 +1,9 @@
+{
+   "name": "Name" ,
+   "email": "E-Mail",
+   "mobile": "Mobile",
+   "address": "Address",
+   "register": "Register",
+   "language": "English",
+   "registrationform": "Registration Form"
+   }
