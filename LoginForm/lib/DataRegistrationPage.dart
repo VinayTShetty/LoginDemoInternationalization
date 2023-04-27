@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:custom_info_window/custom_info_window.dart';
 class DataRegistrationPage extends StatelessWidget {
   String name, email, address, mobilenumber, place;
    LatLng location =  LatLng(12.918427462285367, 77.50269032423634);
    late GoogleMapController mapController;
+  CustomInfoWindowController _customInfoWindowController =
+  CustomInfoWindowController();
   @override
   Widget build(BuildContext context) {
     print("DataRegistrationPage "+name);
@@ -30,14 +33,20 @@ class DataRegistrationPage extends StatelessWidget {
                   Marker(
                     markerId: const MarkerId("marker2"),
                     position: location,
+                      infoWindow: InfoWindow(
+                        title: name+"\n"+email+"\n"+address+"\n"+mobilenumber+"\n"+place,
+                      )
                   ),
                 },
+
+              
             )
     );
 
   }
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    mapController.showMarkerInfoWindow(MarkerId("marker2"));
   }
 
   DataRegistrationPage(
