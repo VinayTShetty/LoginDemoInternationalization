@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:loginform/DataRegistrationPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +40,16 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController mobileController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   String dropdownValue = 'Bangalore';
+  // late String name;
+  // late String email;
+  // late String mobile;
+  // late String address;
+  // late String place;
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController mobile = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController place = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 5,
               ),
               TextField(
-                controller: nameController,
+                controller: name,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
@@ -73,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 5,
               ),
               TextField(
-                controller: emailController,
+                controller: email,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
@@ -87,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 5,
               ),
               TextField(
-                controller: mobileController,
+                controller: mobile,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
@@ -100,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 5,
               ),
               TextField(
-                controller: addressController,
+                controller: address,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
@@ -143,10 +154,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(emailController.text);
                   print(mobileController.text);
                   print(addressController.text);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyApp1()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => const MyApp1()),
+                  // );
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DataRegistrationPage(name: "Vinay", email: "VinayTSherty@gmail.com", address: "Check123", mobilenumber: "4654", place: "Ban")));
                 },
                 child: Text(
                   AppLocalizations.of(context)!.register,
@@ -176,7 +188,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
 class MyApp1 extends StatefulWidget {
-  const MyApp1({super.key});
+
+  String name,email,address,mobilenumber,place;
+
+
+  MyApp1({required this.name,required this.email, required this.address,required this.mobilenumber, required this.place});
 
   @override
   State<MyApp1> createState() => _MyAppState();
@@ -195,16 +211,22 @@ class _MyAppState extends State<MyApp1> {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
-          title: const Text('Maps Sample App'),
+          title: const Text('Data Page'),
           elevation: 2,
         ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-        ),
+        body:Column(
+          children: [
+            Text(''),
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
+              ),
+            )
+          ],
+        )
+
       );
   }
 }
