@@ -6,7 +6,11 @@ class DataRegistrationPage extends StatelessWidget {
   late GoogleMapController mapController;
   @override
   Widget build(BuildContext context) {
-    print("Name"+name);
+    print("DataRegistrationPage "+name);
+    print("DataRegistrationPage "+email);
+    print("DataRegistrationPage "+address);
+    print("DataRegistrationPage "+mobilenumber);
+    print("DataRegistrationPage "+place);
     return Scaffold(
         appBar: AppBar(
           title: const Text('Data Page'),
