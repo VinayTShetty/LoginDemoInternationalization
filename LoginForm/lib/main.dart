@@ -150,10 +150,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(emailController.text);
                   print(mobileController.text);
                   print(addressController.text);
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const MyApp1()),
-                  // );
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DataRegistrationPage(name: name.text.toString(), email: email.text.toString(), address: address.text.toString(), mobilenumber: mobile.text.toString(), place: "Ban")));
                 },
                 child: Text(
@@ -181,48 +177,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-
-
-// class MyApp1 extends StatefulWidget {
-//
-//   String name,email,address,mobilenumber,place;
-//
-//
-//   MyApp1({required this.name,required this.email, required this.address,required this.mobilenumber, required this.place});
-//
-//   @override
-//   State<MyApp1> createState() => _MyAppState();
-// }
-//
-// class _MyAppState extends State<MyApp1> {
-//   late GoogleMapController mapController;
-//
-//   final LatLng _center = const LatLng(45.521563, -122.677433);
-//
-//   void _onMapCreated(GoogleMapController controller) {
-//     mapController = controller;
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Scaffold(
-//         appBar: AppBar(
-//           title: const Text('Data Page'),
-//           elevation: 2,
-//         ),
-//         body:Column(
-//           children: [
-//             Text(''),
-//             GoogleMap(
-//               onMapCreated: _onMapCreated,
-//               initialCameraPosition: CameraPosition(
-//                 target: _center,
-//                 zoom: 11.0,
-//               ),
-//             )
-//           ],
-//         )
-//
-//       );
-//   }
-// }
