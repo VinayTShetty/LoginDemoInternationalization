@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 class DataRegistrationPage extends StatelessWidget {
   String name, email, address, mobilenumber, place;
-  final LatLng _center = const LatLng(45.521563, -122.677433);
-  late GoogleMapController mapController;
+   LatLng location =  LatLng(12.918427462285367, 77.50269032423634);
+   late GoogleMapController mapController;
   @override
   Widget build(BuildContext context) {
     print("DataRegistrationPage "+name);
@@ -11,6 +11,9 @@ class DataRegistrationPage extends StatelessWidget {
     print("DataRegistrationPage "+address);
     print("DataRegistrationPage "+mobilenumber);
     print("DataRegistrationPage "+place);
+    if(place=="Mumbai"){
+      location=LatLng(19.123312171905123, 72.8541727615458);
+    }
     return Scaffold(
         appBar: AppBar(
           title: const Text('Data Page'),
@@ -18,10 +21,17 @@ class DataRegistrationPage extends StatelessWidget {
         body:
             GoogleMap(
               onMapCreated: _onMapCreated,
+              mapType: MapType.satellite,
               initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
+                target:  location,
+                zoom: 20,
               ),
+                markers: {
+                  Marker(
+                    markerId: const MarkerId("marker2"),
+                    position: location,
+                  ),
+                },
             )
     );
 

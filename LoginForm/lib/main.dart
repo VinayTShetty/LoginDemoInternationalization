@@ -121,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Step 3.
                 value: dropdownValue,
                 // Step 4.
-                items: <String>['Bangalore', 'Mysore']
+                items: <String>['Bangalore', 'Mumbai']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -150,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(emailController.text);
                   print(mobileController.text);
                   print(addressController.text);
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DataRegistrationPage(name: name.text.toString(), email: email.text.toString(), address: address.text.toString(), mobilenumber: mobile.text.toString(), place: "Ban")));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DataRegistrationPage(name: name.text.toString(), email: email.text.toString(), address: address.text.toString(), mobilenumber: mobile.text.toString(), place:place.text.toString() )));
                 },
                 child: Text(
                   AppLocalizations.of(context)!.register,
