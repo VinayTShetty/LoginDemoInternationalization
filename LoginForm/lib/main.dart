@@ -116,10 +116,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(mobileController.text);
                   print(addressController.text);
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              MyApp1()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const SecondRoute()),
+                  );
                 },
                 child: Text(
                   AppLocalizations.of(context)!.register,
@@ -148,20 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 
-// class NextPage extends StatelessWidget {
-//
-//   const NextPage({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Data Page'),),
-//       body: Center(
-//
-//       ),
-//     );
-//   }
-// }
+
 class MyApp1 extends StatefulWidget {
   const MyApp1({super.key});
 
@@ -196,6 +182,27 @@ class _MyAppState extends State<MyApp1> {
             target: _center,
             zoom: 11.0,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
         ),
       ),
     );
