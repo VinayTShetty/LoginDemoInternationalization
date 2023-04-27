@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -118,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              NextPage()));
+                              MyApp1()));
                 },
                 child: Text(
                   AppLocalizations.of(context)!.register,
@@ -147,16 +148,55 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 
-class NextPage extends StatelessWidget {
+// class NextPage extends StatelessWidget {
+//
+//   const NextPage({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Data Page'),),
+//       body: Center(
+//
+//       ),
+//     );
+//   }
+// }
+class MyApp1 extends StatefulWidget {
+  const MyApp1({super.key});
 
-  const NextPage({super.key});
+  @override
+  State<MyApp1> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp1> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Data Page'),),
-      body: Center(
-
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green[700],
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Maps Sample App'),
+          elevation: 2,
+        ),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
+          ),
+        ),
       ),
     );
   }
