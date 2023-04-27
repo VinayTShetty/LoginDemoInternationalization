@@ -38,14 +38,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  String dropdownvalue = 'Item 1';
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
+  String dropdownValue = 'Bangalore';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,26 +111,24 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 10,
               ),
-              DropdownButton(
-
-                // Initial Value
-                value: dropdownvalue,
-
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),
-
-                // Array list of items
-                items: items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
+              DropdownButton<String>(
+                // Step 3.
+                value: dropdownValue,
+                // Step 4.
+                items: <String>['Bangalore', 'Mysore']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: TextStyle(fontSize: 30),
+                    ),
                   );
                 }).toList(),
-                // After selecting the desired option,it will
-                // change button value to selected value
+                // Step 5.
                 onChanged: (String? newValue) {
                   setState(() {
-                    dropdownvalue = newValue!;
+                    dropdownValue = newValue!;
                   });
                 },
               ),
