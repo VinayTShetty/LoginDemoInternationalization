@@ -34,7 +34,8 @@ class DataRegistrationPage extends StatelessWidget {
                     markerId: const MarkerId("marker2"),
                     position: location,
                       infoWindow: InfoWindow(
-                        title: name+"\n"+email+"\n"+address+"\n"+mobilenumber+"\n"+place,
+                        title: name,
+                        snippet: email
                       )
                   ),
                 },
