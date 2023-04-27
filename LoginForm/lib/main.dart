@@ -117,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(addressController.text);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SecondRoute()),
+                    MaterialPageRoute(builder: (context) => const MyApp1()),
                   );
                 },
                 child: Text(
@@ -166,12 +166,7 @@ class _MyAppState extends State<MyApp1> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.green[700],
-      ),
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: const Text('Maps Sample App'),
           elevation: 2,
@@ -183,8 +178,7 @@ class _MyAppState extends State<MyApp1> {
             zoom: 11.0,
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
