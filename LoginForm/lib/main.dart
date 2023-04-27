@@ -38,7 +38,14 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-
+  String dropdownvalue = 'Item 1';
+  var items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +111,36 @@ class _RegisterPageState extends State<RegisterPage> {
                   border: OutlineInputBorder(),
                 ),
               ),
+              const SizedBox(
+                height: 5,
+              ),
               SizedBox(
+                height: 10,
+              ),
+              DropdownButton(
+
+                // Initial Value
+                value: dropdownvalue,
+
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),
+
+                // Array list of items
+                items: items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                // After selecting the desired option,it will
+                // change button value to selected value
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropdownvalue = newValue!;
+                  });
+                },
+              ),
+              const SizedBox(
                 height: 10,
               ),
               //create button for register
@@ -134,7 +170,6 @@ class _RegisterPageState extends State<RegisterPage> {
                  AppLocalizations.of(context)!.language,
                 style: TextStyle(
                   fontSize: 30,
-
                 ),
                  textAlign: TextAlign.center,
               ),
