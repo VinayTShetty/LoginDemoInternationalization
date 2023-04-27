@@ -114,9 +114,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   print(emailController.text);
                   print(mobileController.text);
                   print(addressController.text);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              NextPage()));
                 },
-
-
                 child: Text(
                   AppLocalizations.of(context)!.register,
                   style: TextStyle(
@@ -139,6 +142,21 @@ class _RegisterPageState extends State<RegisterPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+
+  const NextPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Data Page'),),
+      body: Center(
+
       ),
     );
   }
